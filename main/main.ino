@@ -1,23 +1,27 @@
 // programma irrigazione S. Marco
 
 
+// Ingressi
 int reset = 13; // pin reset tempo
-int tastiera1 = A1;  // tastiera zone (
-
-const int A = 9;  // uscita binaria per elettrovalvole
-const int B = 10; // uscita binaria per elettrovalvole
-const int C = 11; // uscita binaria per elettrovalvole
-const int D = 12; // uscita binaria per elettrovalvole
-
+int tastiera1 = A1;  // tastiera zone 1, 2, 3;
+int tastiera2 = A2;  // tastiera zone 4, 5, 6, 7;
 int potenziometro_tempo = A0; // pin potenziometro per regolare tempo
 
-int l1 = 5; // pin led zona1
-int l2 = 6; // pin led zona2
-int l3 = 7; // pin led zona3
-//int l4 = 6 // pin led zona4
-//int l5 = 7 // pin led zona5
+
+const int A = 9;  // uscita binaria per elettrovalvole (b0)
+const int B = 10; // uscita binaria per elettrovalvole (b1)
+const int C = 11; // uscita binaria per elettrovalvole (b2)
+const int D = 12; // uscita binaria per elettrovalvole (b3)
+const int POZZO = 8;  // uscita comando pozzo
+
+
+//int led1 = 5; // pin led zona1
+//int led2 = 6; // pin led zona2
+//int led3 = 7; // pin led zona3
+//int led4 = 6 // pin led zona4
+//int led5 = 7 // pin led zona5
 //int 16 = 8 // pin led zona6
-//int l7 = 9 // pin led zona7
+//int led7 = 9 // pin led zona7
 
 int led_timer = 8; // pin led controllo tempo > 0
 
@@ -29,33 +33,34 @@ void setup() {
 
   Serial.begin(9600);
 
+  pinMode(reset, INPUT);
+  pinMode(tastiera1, INPUT);
+  pinMode(tastiera2, INPUT); 
+  //pinMode(z4, INPUT);
+  //pinMode(z5, INPUT);
+  //pinMode(z6, INPUT);
+  //pinMode(z7, INPUT);
+   
   pinMode(A, OUTPUT);
   pinMode(B, OUTPUT);
   pinMode(C, OUTPUT);
   pinMode(D, OUTPUT);
+  
+  pinMode(led_timer, OUTPUT); // accesa = tempo scelto; spenta = tempo non scelto
+
+
+  //pinMode(led1, OUTPUT); // l + numero : led zona => informazione esce (OUTPUT)
+  //pinMode(led2, OUTPUT);
+  //pinMode(led3, OUTPUT);
+  //pinMode(led4, OUTPUT);
+  //pinMode(led5, OUTPUT);
+  //pinMode(led6, OUTPUT);
+  //pinMode(led7, OUTPUT);
 
   digitalWrite(A, HIGH);
   digitalWrite(B, HIGH);
   digitalWrite(C, HIGH);
   digitalWrite(D, HIGH);
-  pinMode(reset, INPUT);
-  //pinMode(z4, INPUT);
-  //pinMode(z5, INPUT);
-  //pinMode(z6, INPUT);
-  //pinMode(z7, INPUT);
-
-  pinMode(tastiera1, INPUT);
-
-  pinMode(l1, OUTPUT); // l + numero : led zona => informazione esce (OUTPUT)
-  pinMode(l2, OUTPUT);
-  pinMode(l3, OUTPUT);
-  //pinMode(l4, OUTPUT);
-  //pinMode(l5, OUTPUT);
-  //pinMode(l6, OUTPUT);
-  //pinMode(l7, OUTPUT);
-  
-  pinMode(led_timer, OUTPUT); // accesa = tempo scelto; spenta = tempo non scelto
-
 }
 
 void loop() {
@@ -110,7 +115,7 @@ void loop() {
     digitalWrite(led_timer, HIGH);
     if (analogRead(tastiera1)>0 && analogRead(tastiera1)<10){
       
-      digitalWrite(l1, HIGH);
+      digitalWrite(led1, HIGH);
       
       digitalWrite(A, HIGH);
       digitalWrite(B, LOW);
@@ -126,7 +131,7 @@ void loop() {
         }
       }
       
-      digitalWrite(l1, LOW);
+      digitalWrite(led1, LOW);
 
       digitalWrite(A, HIGH);
       digitalWrite(B, HIGH);
@@ -141,7 +146,7 @@ void loop() {
         tempo = 0;
       }
       
-      digitalWrite(l2, HIGH);
+      digitalWrite(led2, HIGH);
 
       digitalWrite(A, LOW);
       digitalWrite(B, HIGH);
@@ -158,7 +163,7 @@ void loop() {
       }
       
       delay(tempo);
-      digitalWrite(l2, LOW);
+      digitalWrite(led2, LOW);
 
       digitalWrite(A, HIGH);
       digitalWrite(B, HIGH);
@@ -169,7 +174,7 @@ void loop() {
     
     if (analogRead(tastiera1)>680 && analogRead(tastiera1)<690){
       
-      digitalWrite(l3, HIGH);
+      digitalWrite(led3, HIGH);
 
       digitalWrite(A, HIGH);
       digitalWrite(B, HIGH);
@@ -186,7 +191,7 @@ void loop() {
       }
       
       delay(tempo);
-      digitalWrite(l3, LOW);
+      digitalWrite(led3, LOW);
 
       digitalWrite(A, HIGH);
       digitalWrite(B, HIGH);
