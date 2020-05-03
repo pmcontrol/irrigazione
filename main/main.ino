@@ -4,9 +4,8 @@
 
 
 
-int res = 13;
-
-int b = A1;
+int reset = 13; // pin reset tempo
+int tastiera1 = A1;  // tastiera zone (
 
 const int A = 9;
 const int B = 10;
@@ -42,13 +41,13 @@ void setup() {
   digitalWrite(B, HIGH);
   digitalWrite(C, HIGH);
   digitalWrite(D, HIGH);
-  pinMode(res, INPUT);
+  pinMode(reset, INPUT);
   //pinMode(z4, INPUT);
   //pinMode(z5, INPUT);
   //pinMode(z6, INPUT);
   //pinMode(z7, INPUT);
 
-  pinMode(b, INPUT);
+  pinMode(tastiera1, INPUT);
 
   pinMode(l1, OUTPUT); // l + numero : led zona => informazione esce (OUTPUT)
   pinMode(l2, OUTPUT);
@@ -69,8 +68,8 @@ void loop() {
   Serial.println(analogRead(t));
   Serial.print("tempo : ");
   Serial.println(tempo);
-  Serial.print("b : ");
-  Serial.println(digitalRead(res));
+  Serial.print("tastiera1 : ");
+  Serial.println(digitalRead(reset));
   Serial.println("###");
 
   delay(2000);
@@ -112,7 +111,7 @@ void loop() {
     digitalWrite(lc, LOW);
   }else{
     digitalWrite(lc, HIGH);
-    if (analogRead(b)>0 && analogRead(b)<10){
+    if (analogRead(tastiera1)>0 && analogRead(tastiera1)<10){
       
       digitalWrite(l1, HIGH);
       
@@ -125,7 +124,7 @@ void loop() {
         delay(1);
         tempo--;
 
-        if (digitalRead(res) == LOW){
+        if (digitalRead(reset) == LOW){
           tempo = 0;
         }
       }
@@ -139,9 +138,9 @@ void loop() {
       
     }
     
-    if (analogRead(b)>510 && analogRead(b)<520){
+    if (analogRead(tastiera1)>510 && analogRead(tastiera1)<520){
 
-      if (digitalRead(res) == LOW){
+      if (digitalRead(reset) == LOW){
         tempo = 0;
       }
       
@@ -156,7 +155,7 @@ void loop() {
         delay(1);
         tempo--;
 
-        if (digitalRead(res) == LOW){
+        if (digitalRead(reset) == LOW){
           tempo = 0;
         }
       }
@@ -171,7 +170,7 @@ void loop() {
       
     }
     
-    if (analogRead(b)>680 && analogRead(b)<690){
+    if (analogRead(tastiera1)>680 && analogRead(tastiera1)<690){
       
       digitalWrite(l3, HIGH);
 
@@ -184,7 +183,7 @@ void loop() {
         delay(1);
         tempo--;
 
-        if (digitalRead(res) == LOW){
+        if (digitalRead(reset) == LOW){
           tempo = 0;
         }
       }
