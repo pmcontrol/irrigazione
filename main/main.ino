@@ -2,10 +2,10 @@
 
 
 // Ingressi
-int reset = 13; // pin reset tempo
+int potenziometro_tempo = A0; // pin potenziometro per regolare tempo
 int tastiera1 = A1;  // tastiera zone 1, 2, 3;
 int tastiera2 = A2;  // tastiera zone 4, 5, 6, 7;
-int potenziometro_tempo = A0; // pin potenziometro per regolare tempo
+int reset = 13; // pin reset tempo
 
 
 const int A = 9;  // uscita binaria per elettrovalvole (b0)
@@ -112,12 +112,13 @@ void loop() {
   if (tempo < 30000){
     digitalWrite(led_timer, LOW);  // led timer OFF
       
-    digitalWrite(A, LOW);
-    digitalWrite(B, LOW);
-    digitalWrite(C, LOW);
-    digitalWrite(D, LOW); 
+    digitalWrite(A, HIGH);
+    digitalWrite(B, HIGH);
+    digitalWrite(C, HIGH);
+    digitalWrite(D, HIGH); 
 
     digitalWrite(POZZO, LOW)
+    
   }else{
     digitalWrite(led_timer, HIGH);
     if (analogRead(tastiera1)>0 && analogRead(tastiera1)<10){
@@ -128,7 +129,9 @@ void loop() {
       digitalWrite(B, LOW);
       digitalWrite(C, LOW);
       digitalWrite(D, LOW); 
-      
+
+      digitalWrite(POZZO, HIGH)
+          
       while(tempo > 0){
         delay(1);
         tempo--;
@@ -144,6 +147,8 @@ void loop() {
       digitalWrite(B, HIGH);
       digitalWrite(C, HIGH);
       digitalWrite(D, HIGH);
+
+      digitalWrite(POZZO, HIGH)
       
     }
     
@@ -159,6 +164,8 @@ void loop() {
       digitalWrite(B, HIGH);
       digitalWrite(C, LOW);
       digitalWrite(D, LOW); 
+
+      digitalWrite(POZZO, HIGH)
 
       while(tempo > 0){
         delay(1);
@@ -176,6 +183,8 @@ void loop() {
       digitalWrite(B, HIGH);
       digitalWrite(C, HIGH);
       digitalWrite(D, HIGH);
+
+      digitalWrite(POZZO, HIGH)
       
     }
     
