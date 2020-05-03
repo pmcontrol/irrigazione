@@ -117,7 +117,7 @@ void loop() {
     digitalWrite(C, HIGH);
     digitalWrite(D, HIGH); 
 
-    digitalWrite(POZZO, LOW)
+    digitalWrite(POZZO, LOW);
     
   }else{
     digitalWrite(led_timer, HIGH);
@@ -130,7 +130,7 @@ void loop() {
       digitalWrite(C, LOW);
       digitalWrite(D, LOW); 
 
-      digitalWrite(POZZO, HIGH)
+      digitalWrite(POZZO, HIGH);
           
       while(tempo > 0){
         delay(1);
@@ -148,7 +148,7 @@ void loop() {
       digitalWrite(C, HIGH);
       digitalWrite(D, HIGH);
 
-      digitalWrite(POZZO, HIGH)
+      digitalWrite(POZZO, HIGH);
       
     }
     
@@ -165,7 +165,7 @@ void loop() {
       digitalWrite(C, LOW);
       digitalWrite(D, LOW); 
 
-      digitalWrite(POZZO, HIGH)
+      digitalWrite(POZZO, HIGH);
 
       while(tempo > 0){
         delay(1);
@@ -184,7 +184,7 @@ void loop() {
       digitalWrite(C, HIGH);
       digitalWrite(D, HIGH);
 
-      digitalWrite(POZZO, HIGH)
+      digitalWrite(POZZO, HIGH);
       
     }
     
@@ -217,4 +217,3 @@ void loop() {
     }    
   }
 }
-// prova
