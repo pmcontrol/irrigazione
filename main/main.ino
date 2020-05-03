@@ -15,13 +15,13 @@ const int D = 12; // uscita binaria per elettrovalvole (b3)
 const int POZZO = 8;  // uscita comando pozzo
 
 
-//int led1 = 5; // pin led zona1
-//int led2 = 6; // pin led zona2
-//int led3 = 7; // pin led zona3
-//int led4 = 6 // pin led zona4
-//int led5 = 7 // pin led zona5
-//int 16 = 8 // pin led zona6
-//int led7 = 9 // pin led zona7
+int led1 = 5; // pin led zona1
+int led2 = 6; // pin led zona2
+int led3 = 7; // pin led zona3
+//int led4 = 6; // pin led zona4
+//int led5 = 7; // pin led zona5
+//int 16 = 8; // pin led zona6
+//int led7 = 9; // pin led zona7
 
 int led_timer = 8; // pin led controllo tempo > 0
 
@@ -49,9 +49,9 @@ void setup() {
   pinMode(led_timer, OUTPUT); // accesa = tempo scelto; spenta = tempo non scelto
 
 
-  //pinMode(led1, OUTPUT); // l + numero : led zona => informazione esce (OUTPUT)
-  //pinMode(led2, OUTPUT);
-  //pinMode(led3, OUTPUT);
+  pinMode(led1, OUTPUT); // l + numero : led zona => informazione esce (OUTPUT)
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
   //pinMode(led4, OUTPUT);
   //pinMode(led5, OUTPUT);
   //pinMode(led6, OUTPUT);
@@ -110,7 +110,14 @@ void loop() {
   }
 
   if (tempo < 30000){
-    digitalWrite(led_timer, LOW);
+    digitalWrite(led_timer, LOW);  // led timer OFF
+      
+    digitalWrite(A, LOW);
+    digitalWrite(B, LOW);
+    digitalWrite(C, LOW);
+    digitalWrite(D, LOW); 
+
+    digitalWrite(POZZO, LOW)
   }else{
     digitalWrite(led_timer, HIGH);
     if (analogRead(tastiera1)>0 && analogRead(tastiera1)<10){
